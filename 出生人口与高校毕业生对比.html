@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1970-2002年出生人口与高校毕业生对比分析</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            height: 70vh;
+            width: 100%;
+        }
+        @media (max-width: 640px) {
+            .chart-container {
+                height: 50vh;
+            }
+        }
+        .highlight-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1;
+            background: linear-gradient(90deg, #3b82f6 0%, #ef4444 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-heading {
+            background: linear-gradient(90deg, #3b82f6 0%, #ef4444 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .intro-card {
+            border-left: 4px solid #3b82f6;
+            background-color: #ebf5ff;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="container mx-auto px-4 py-8">
+        <!-- 导航按钮 -->
+        <div class="flex flex-wrap justify-center gap-4 mb-8">
+            <a href="#" class="px-5 py-3 bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-lg shadow-md cursor-default opacity-75 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+                </svg>
+                当前页：1970-2002年出生人口分析
+            </a>
+            <a href="未来高校毕业生预测_2003-2024.html" class="px-5 py-3 bg-gradient-to-r from-red-500 to-red-700 text-white rounded-lg shadow-md hover:shadow-lg transition-all flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10.293 15.707a1 1 0 010-1.414L14.586 10l-4.293-4.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                    <path fill-rule="evenodd" d="M4.293 15.707a1 1 0 010-1.414L8.586 10 4.293 5.707a1 1 0 011.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                </svg>
+                2003-2024年毕业生预测
+            </a>
+            <a href="985_211高校占比预测_2027-2046.html" class="px-5 py-3 bg-gradient-to-r from-purple-500 to-purple-700 text-white rounded-lg shadow-md hover:shadow-lg transition-all flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10.293 15.707a1 1 0 010-1.414L14.586 10l-4.293-4.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                    <path fill-rule="evenodd" d="M4.293 15.707a1 1 0 010-1.414L8.586 10 4.293 5.707a1 1 0 011.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                </svg>
+                985/211高校占比预测
+            </a>
+        </div>
+        
+        <!-- 引人注目的开头部分 -->
+        <div class="mb-12 bg-white rounded-xl overflow-hidden shadow-lg">
+            <div class="p-6 md:p-8">
+                <h1 class="text-3xl md:text-4xl font-bold text-center mb-8 gradient-heading">中国教育大跃进：从精英教育到千万毕业生</h1>
+                
+                <div class="flex flex-col md:flex-row gap-8 items-center mb-8">
+                    <div class="w-full md:w-2/3">
+                        <div class="intro-card p-5 rounded-r-lg mb-6">
+                            <p class="text-lg font-medium text-gray-800">想象一下：</p>
+                            <p class="text-gray-700 mt-2">如果1970年的一个婴儿，二十多年后有<span class="font-semibold text-blue-600">2.2%</span>的机会成为大学毕业生...那么2002年出生的孩子呢？</p>
+                            <p class="text-gray-700 mt-2">答案是惊人的<span class="font-semibold text-red-600">71.8%</span>！这意味着什么？</p>
+                        </div>
+                        
+                        <p class="text-gray-700">短短30多年间，中国高等教育完成了从精英教育到大众教育的历史性跨越。本分析通过对比1970-2002年出生人口与对应毕业年的高校毕业生数据，揭示这一惊人转变背后的故事。</p>
+                    </div>
+                    
+                    <div class="w-full md:w-1/3 flex flex-col items-center justify-center p-4 bg-gray-50 rounded-lg">
+                        <div class="text-center mb-4">
+                            <p class="text-sm text-gray-500">2002年出生人口</p>
+                            <div class="highlight-number">1641万</div>
+                        </div>
+                        <div class="w-full h-1 bg-gray-200 relative">
+                            <div class="absolute -top-3 left-0 text-xs text-blue-600">1970</div>
+                            <div class="absolute -top-3 right-0 text-xs text-red-600">2002</div>
+                            <div class="h-full bg-gradient-to-r from-blue-500 to-red-500" style="width:60%"></div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <p class="text-sm text-gray-500">2024年毕业生</p>
+                            <div class="highlight-number">1179万</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center mb-2">
+                    <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
+                        <p class="text-gray-500 text-sm">1970年代高教普及率</p>
+                        <p class="text-xl font-bold text-blue-600">2-5%</p>
+                    </div>
+                    <div class="bg-purple-50 p-4 rounded-lg border border-purple-100">
+                        <p class="text-gray-500 text-sm">高等教育增长</p>
+                        <p class="text-xl font-bold text-purple-600">近20倍</p>
+                    </div>
+                    <div class="bg-red-50 p-4 rounded-lg border border-red-100">
+                        <p class="text-gray-500 text-sm">2000年代高教普及率</p>
+                        <p class="text-xl font-bold text-red-600">70%+</p>
+                    </div>
+                </div>
+                
+                <div class="flex justify-center mt-6">
+                    <a href="#main-content" class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500 to-red-500 text-white rounded-full hover:from-blue-600 hover:to-red-600 transition-all">
+                        探索详细数据
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v10.586l3.293-3.293a1 1 0 011.414 1.414l-5 5a1 1 0 01-1.414 0l-5-5a1 1 0 111.414-1.414L9 14.586V4a1 1 0 011-1z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div id="main-content">
+            <header class="mb-10 text-center">
+                <h1 class="text-3xl font-bold text-gray-800 mb-4">1970-2002年中国出生人口与高校毕业生对比分析</h1>
+                <p class="text-gray-600 max-w-3xl mx-auto">本分析展示了1970年至2002年间中国出生人口数量与对应毕业年份（出生+22年）高校毕业生数量的变化趋势及相关指标</p>
+            </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">出生人口与毕业生数量趋势</h2>
+                <div class="chart-container">
+                    <canvas id="populationChart"></canvas>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">高等教育普及率变化</h2>
+                <div class="chart-container">
+                    <canvas id="ratioChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md mb-10">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">关键数据表格</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full text-sm">
+                    <thead>
+                        <tr class="bg-gray-100">
+                            <th class="px-4 py-2 text-left">出生年份</th>
+                            <th class="px-4 py-2 text-right">出生人口(万)</th>
+                            <th class="px-4 py-2 text-right">较上年变化</th>
+                            <th class="px-4 py-2 text-left">毕业年份</th>
+                            <th class="px-4 py-2 text-right">毕业生人数(万)</th>
+                            <th class="px-4 py-2 text-right">普及率(%)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dataTable">
+                        <!-- 数据将通过JS动态填充 -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-lg font-semibold text-gray-800 mb-3">人口趋势分析</h3>
+                <div class="text-gray-700">
+                    <p>1970-2002年间，出生人口从2710万下降至1641万，总计下降了约<span class="font-semibold text-blue-600">40%</span>。</p>
+                    <div class="mt-3 space-y-2">
+                        <div class="flex justify-between items-center border-b pb-1">
+                            <span class="text-sm">1970年代</span>
+                            <span class="text-red-600 text-sm">↓ 36.7%</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b pb-1">
+                            <span class="text-sm">1980年代</span>
+                            <span class="text-green-600 text-sm">↑ 34.8%</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b pb-1">
+                            <span class="text-sm">1990年代</span>
+                            <span class="text-red-600 text-sm">↓ 22.7%</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm">2000年代</span>
+                            <span class="text-red-600 text-sm">↓ 7.0%</span>
+                        </div>
+                    </div>
+                    <p class="mt-3">
+                        <span class="bg-red-100 text-red-800 text-xs font-medium px-2 py-0.5 rounded">下降期</span>
+                        <span class="ml-1">1970-1979年、1990-2002年</span>
+                    </p>
+                    <p class="mt-1">
+                        <span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-0.5 rounded">增长期</span>
+                        <span class="ml-1">1980-1989年</span>
+                    </p>
+                    <p class="mt-3 text-sm italic">计划生育政策于1970年代中期全面推行，导致出生人口急剧下降；1980年代生育政策调整后短暂反弹；1990年代后再次持续下降。</p>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-lg font-semibold text-gray-800 mb-3">高校毕业生趋势</h3>
+                <div class="text-gray-700">
+                    <p>1992-2024年间，毕业生人数从60万增长至1179万，增长了近<span class="font-semibold text-red-600">20倍</span>。</p>
+                    <p class="mt-2">2000年后增长加速，特别是从2020年后，年毕业生数量突破1000万大关。</p>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-lg font-semibold text-gray-800 mb-3">高等教育普及率</h3>
+                <div class="text-gray-700">
+                    <p>高等教育普及率从1970年代的约<span class="font-semibold text-purple-600">2%</span>提升至2000年代初的<span class="font-semibold text-purple-600">70%以上</span>。</p>
+                    <p class="mt-2">反映了中国高等教育从精英教育向大众教育、普及教育的转变过程。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md mb-10">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">高等教育发展阶段</h2>
+            <div class="flex justify-center mb-4">
+                <svg width="800" height="150" viewBox="0 0 800 150" class="max-w-full">
+                    <!-- 时间轴 -->
+                    <line x1="50" y1="75" x2="750" y2="75" stroke="#CBD5E0" stroke-width="4"/>
+                    
+                    <!-- 阶段标记 -->
+                    <circle cx="100" cy="75" r="10" fill="#3B82F6"/>
+                    <circle cx="300" cy="75" r="10" fill="#3B82F6"/>
+                    <circle cx="500" cy="75" r="10" fill="#3B82F6"/>
+                    <circle cx="700" cy="75" r="10" fill="#3B82F6"/>
+                    
+                    <!-- 阶段文本 -->
+                    <text x="100" y="40" text-anchor="middle" font-size="14" fill="#2D3748">1970年代</text>
+                    <text x="100" y="110" text-anchor="middle" font-size="12" fill="#4A5568">精英教育阶段</text>
+                    <text x="100" y="125" text-anchor="middle" font-size="10" fill="#718096">普及率&lt;5%</text>
+                    
+                    <text x="300" y="40" text-anchor="middle" font-size="14" fill="#2D3748">1980年代</text>
+                    <text x="300" y="110" text-anchor="middle" font-size="12" fill="#4A5568">扩张初期</text>
+                    <text x="300" y="125" text-anchor="middle" font-size="10" fill="#718096">普及率10-20%</text>
+                    
+                    <text x="500" y="40" text-anchor="middle" font-size="14" fill="#2D3748">1990年代</text>
+                    <text x="500" y="110" text-anchor="middle" font-size="12" fill="#4A5568">快速发展期</text>
+                    <text x="500" y="125" text-anchor="middle" font-size="10" fill="#718096">普及率20-40%</text>
+                    
+                    <text x="700" y="40" text-anchor="middle" font-size="14" fill="#2D3748">2000年代</text>
+                    <text x="700" y="110" text-anchor="middle" font-size="12" fill="#4A5568">大众化阶段</text>
+                    <text x="700" y="125" text-anchor="middle" font-size="10" fill="#718096">普及率&gt;50%</text>
+                </svg>
+            </div>
+        </div>
+
+        <footer class="text-center text-gray-500 text-sm">
+            <p>数据来源：1970-2002年出生人口与毕业生对比表</p>
+            <p class="mt-1">© 2023 中国高等教育数据分析</p>
+        </footer>
+    </div>
+
+    <script>
+        // 数据
+        const data = [
+            { birthYear: 1970, population: 2710, gradYear: 1992, graduates: 60.42 },
+            { birthYear: 1971, population: 2551, gradYear: 1993, graduates: 57.07 },
+            { birthYear: 1972, population: 2550, gradYear: 1994, graduates: 63.74 },
+            { birthYear: 1973, population: 2447, gradYear: 1995, graduates: 80.54 },
+            { birthYear: 1974, population: 2226, gradYear: 1996, graduates: 83.86 },
+            { birthYear: 1975, population: 2102, gradYear: 1997, graduates: 82.91 },
+            { birthYear: 1976, population: 1849, gradYear: 1998, graduates: 82.98 },
+            { birthYear: 1977, population: 1783, gradYear: 1999, graduates: 84.76 },
+            { birthYear: 1978, population: 1733, gradYear: 2000, graduates: 94.98 },
+            { birthYear: 1979, population: 1715, gradYear: 2001, graduates: 103.63 },
+            { birthYear: 1980, population: 1776, gradYear: 2002, graduates: 145 },
+            { birthYear: 1981, population: 2064, gradYear: 2003, graduates: 187 },
+            { birthYear: 1982, population: 2230, gradYear: 2004, graduates: 280 },
+            { birthYear: 1983, population: 2052, gradYear: 2005, graduates: 338 },
+            { birthYear: 1984, population: 2050, gradYear: 2006, graduates: 413 },
+            { birthYear: 1985, population: 2196, gradYear: 2007, graduates: 495 },
+            { birthYear: 1986, population: 2374, gradYear: 2008, graduates: 559 },
+            { birthYear: 1987, population: 2508, gradYear: 2009, graduates: 611 },
+            { birthYear: 1988, population: 2445, gradYear: 2010, graduates: 631 },
+            { birthYear: 1989, population: 2396, gradYear: 2011, graduates: 660 },
+            { birthYear: 1990, population: 2374, gradYear: 2012, graduates: 684 },
+            { birthYear: 1991, population: 2250, gradYear: 2013, graduates: 699 },
+            { birthYear: 1992, population: 2113, gradYear: 2014, graduates: 727 },
+            { birthYear: 1993, population: 2120, gradYear: 2015, graduates: 749 },
+            { birthYear: 1994, population: 2098, gradYear: 2016, graduates: 765 },
+            { birthYear: 1995, population: 2052, gradYear: 2017, graduates: 795 },
+            { birthYear: 1996, population: 2057, gradYear: 2018, graduates: 821 },
+            { birthYear: 1997, population: 2028, gradYear: 2019, graduates: 834 },
+            { birthYear: 1998, population: 1934, gradYear: 2020, graduates: 874 },
+            { birthYear: 1999, population: 1827, gradYear: 2021, graduates: 909 },
+            { birthYear: 2000, population: 1765, gradYear: 2022, graduates: 1076 },
+            { birthYear: 2001, population: 1696, gradYear: 2023, graduates: 1174 },
+            { birthYear: 2002, population: 1641, gradYear: 2024, graduates: 1179 }
+        ];
+
+        // 计算普及率
+        data.forEach((item, index) => {
+            item.ratio = (item.graduates / item.population * 100).toFixed(2);
+            
+            // 计算变化率
+            if (index > 0) {
+                const prevItem = data[index - 1];
+                const diff = item.population - prevItem.population;
+                const percent = ((diff / prevItem.population) * 100).toFixed(1);
+                item.change = {
+                    diff: diff,
+                    percent: percent,
+                    direction: diff >= 0 ? 'up' : 'down'
+                };
+            } else {
+                item.change = {
+                    diff: 0,
+                    percent: "0.0",
+                    direction: 'neutral'
+                };
+            }
+            
+            // 添加年代分类
+            if (item.birthYear < 1980) item.decade = "1970年代";
+            else if (item.birthYear < 1990) item.decade = "1980年代";
+            else if (item.birthYear < 2000) item.decade = "1990年代";
+            else item.decade = "2000年代";
+        });
+
+        // 填充表格
+        const tableBody = document.getElementById('dataTable');
+        
+        // 展示所有年份数据，但按照年代分组
+        let currentDecade = "";
+        
+        data.forEach((item, index) => {
+            // 年代分组标题行
+            if (item.decade !== currentDecade) {
+                currentDecade = item.decade;
+                const decadeRow = document.createElement('tr');
+                decadeRow.className = 'bg-gray-200 font-semibold';
+                decadeRow.innerHTML = `
+                    <td colspan="6" class="px-4 py-2 text-center">${currentDecade}</td>
+                `;
+                tableBody.appendChild(decadeRow);
+            }
+            
+            const row = document.createElement('tr');
+            
+            // 根据变化率添加不同样式
+            let trendsStyle = '';
+            let changeHTML = '';
+            
+            if (index > 0) {
+                let colorClass = item.change.direction === 'up' ? 'text-green-600' : 'text-red-600';
+                let iconClass = item.change.direction === 'up' ? '↑' : '↓';
+                
+                if (Math.abs(item.change.diff) < 50) {
+                    colorClass = 'text-gray-600';
+                    iconClass = '→';
+                }
+                
+                changeHTML = `<span class="${colorClass}">${iconClass} ${item.change.diff.toLocaleString()} (${item.change.percent}%)</span>`;
+                
+                // 添加特殊年份标记
+                if (Math.abs(item.change.diff) > 200) {
+                    trendsStyle = item.change.direction === 'up' ? 'bg-green-50' : 'bg-red-50';
+                }
+            } else {
+                changeHTML = '<span class="text-gray-500">—</span>';
+            }
+            
+            // 是否为关键年份
+            const keyYears = [1970, 1975, 1980, 1985, 1990, 1995, 2000, 2002];
+            if (keyYears.includes(item.birthYear)) {
+                trendsStyle += ' font-medium';
+            }
+            
+            row.className = `border-b hover:bg-gray-50 ${trendsStyle}`;
+            row.innerHTML = `
+                <td class="px-4 py-2">${item.birthYear}</td>
+                <td class="px-4 py-2 text-right">${item.population.toLocaleString()}</td>
+                <td class="px-4 py-2 text-right">${changeHTML}</td>
+                <td class="px-4 py-2">${item.gradYear}</td>
+                <td class="px-4 py-2 text-right">${item.graduates.toLocaleString()}</td>
+                <td class="px-4 py-2 text-right">${item.ratio}%</td>
+            `;
+            tableBody.appendChild(row);
+        });
+
+        // 人口与毕业生数量对比图
+        const populationCtx = document.getElementById('populationChart').getContext('2d');
+        
+        // 计算重要节点
+        const importantPoints = [
+            { year: 1976, label: '计划生育政策影响', description: '出生人口开始明显下降' },
+            { year: 1985, label: '80年代生育高峰', description: '出生人口回升到峰值' },
+            { year: 2000, label: '高教扩招效应', description: '毕业生数量开始快速上升' },
+            { year: 2022, label: '毕业生破千万', description: '高校毕业生首次突破1000万' }
+        ];
+        
+        // 找到年份对应的数据索引
+        const findYearIndex = (year) => {
+            return data.findIndex(item => item.birthYear === year);
+        };
+
+        // 创建双Y轴图表
+        new Chart(populationCtx, {
+            type: 'line',
+            data: {
+                labels: data.map(item => item.birthYear),
+                datasets: [
+                    {
+                        label: '出生人口(万)',
+                        data: data.map(item => item.population),
+                        borderColor: 'rgba(59, 130, 246, 1)',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        yAxisID: 'y',
+                        tension: 0.3,
+                        pointRadius: function(context) {
+                            // 重要年份显示大点
+                            const index = context.dataIndex;
+                            const year = data[index].birthYear;
+                            if (importantPoints.some(p => p.year === year)) {
+                                return 6;
+                            }
+                            return 0; // 普通点不显示，减少视觉干扰
+                        },
+                        pointBackgroundColor: 'rgba(59, 130, 246, 1)',
+                        pointBorderColor: 'white',
+                        pointBorderWidth: 2,
+                        pointHoverRadius: 8,
+                        order: 1
+                    },
+                    {
+                        label: '毕业生人数(万)',
+                        data: data.map(item => item.graduates),
+                        borderColor: 'rgba(220, 38, 38, 1)',
+                        backgroundColor: 'rgba(220, 38, 38, 0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        yAxisID: 'y1',
+                        tension: 0.3,
+                        pointRadius: function(context) {
+                            // 重要年份显示大点
+                            const index = context.dataIndex;
+                            const year = data[index].birthYear;
+                            const gradYear = data[index].gradYear;
+                            // 查找是否有对应的毕业年份是重要点
+                            for (const point of importantPoints) {
+                                if (point.year === year || gradYear === point.year) {
+                                    return 6;
+                                }
+                            }
+                            return 0;
+                        },
+                        pointBackgroundColor: 'rgba(220, 38, 38, 1)',
+                        pointBorderColor: 'white',
+                        pointBorderWidth: 2,
+                        pointHoverRadius: 8,
+                        order: 2
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    intersect: false,
+                    mode: 'index'
+                },
+                plugins: {
+                    tooltip: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                        titleFont: {
+                            size: 14,
+                            weight: 'bold'
+                        },
+                        bodyFont: {
+                            size: 13
+                        },
+                        callbacks: {
+                            title: function(context) {
+                                const index = context[0].dataIndex;
+                                const year = data[index].birthYear;
+                                // 查找是否为重要年份
+                                const point = importantPoints.find(p => p.year === year);
+                                if (point) {
+                                    return [`${year}年 - ${point.label}`, point.description];
+                                }
+                                return `${year}年`;
+                            },
+                            label: function(context) {
+                                if (context.dataset.label === '出生人口(万)') {
+                                    return `出生人口: ${context.raw.toLocaleString()}万人`;
+                                } else {
+                                    return `毕业生人数(${data[context.dataIndex].gradYear}年): ${context.raw.toLocaleString()}万人`;
+                                }
+                            },
+                            afterLabel: function(context) {
+                                const index = context.dataIndex;
+                                if (context.dataset.label === '出生人口(万)' && index > 0) {
+                                    const diff = data[index].population - data[index-1].population;
+                                    const percent = ((diff / data[index-1].population) * 100).toFixed(1);
+                                    const sign = diff >= 0 ? '+' : '';
+                                    return `同比变化: ${sign}${diff.toLocaleString()}万 (${sign}${percent}%)`;
+                                }
+                                if (context.dataset.label === '毕业生人数(万)' && index > 0) {
+                                    const diff = data[index].graduates - data[index-1].graduates;
+                                    const percent = ((diff / data[index-1].graduates) * 100).toFixed(1);
+                                    const sign = diff >= 0 ? '+' : '';
+                                    return `同比变化: ${sign}${diff.toLocaleString()}万 (${sign}${percent}%)`;
+                                }
+                            }
+                        }
+                    },
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            font: {
+                                size: 13
+                            },
+                            usePointStyle: true,
+                            padding: 20
+                        }
+                    },
+                    annotation: {
+                        annotations: {
+                            // 添加重要历史节点注释
+                            ...importantPoints.reduce((acc, point, index) => {
+                                const pointIndex = findYearIndex(point.year);
+                                if (pointIndex >= 0) {
+                                    acc[`point${index}`] = {
+                                        type: 'point',
+                                        xValue: point.year,
+                                        yValue: data[pointIndex].population,
+                                        backgroundColor: 'rgba(59, 130, 246, 0.8)',
+                                        borderColor: 'white',
+                                        borderWidth: 2,
+                                        radius: 6
+                                    };
+                                }
+                                return acc;
+                            }, {})
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: '出生年份',
+                            font: {
+                                weight: 'bold',
+                                size: 14
+                            }
+                        },
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            autoSkip: true,
+                            maxTicksLimit: 15,
+                            callback: function(value, index) {
+                                // 每5年显示一次完整年份，其余显示简化格式
+                                if (index % 5 === 0) return value;
+                                return "'" + String(value).slice(-2);
+                            }
+                        }
+                    },
+                    y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        min: 1500,
+                        max: 3000,
+                        title: {
+                            display: true,
+                            text: '出生人口（万人）',
+                            font: {
+                                weight: 'bold',
+                                size: 14
+                            },
+                            color: 'rgba(59, 130, 246, 1)'
+                        },
+                        grid: {
+                            color: 'rgba(107, 114, 128, 0.1)'
+                        },
+                        ticks: {
+                            color: 'rgba(59, 130, 246, 0.8)'
+                        }
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        min: 0,
+                        max: 1300,
+                        title: {
+                            display: true,
+                            text: '毕业生人数（万人）',
+                            font: {
+                                weight: 'bold',
+                                size: 14
+                            },
+                            color: 'rgba(220, 38, 38, 1)'
+                        },
+                        grid: {
+                            drawOnChartArea: false
+                        },
+                        ticks: {
+                            color: 'rgba(220, 38, 38, 0.8)'
+                        }
+                    }
+                }
+            },
+            plugins: [{
+                beforeDraw: function(chart) {
+                    const ctx = chart.ctx;
+                    const xAxis = chart.scales.x;
+                    const yAxis = chart.scales.y;
+                    const y1Axis = chart.scales.y1;
+                    
+                    // 绘制年代分割线
+                    const decadeYears = [1980, 1990, 2000];
+                    
+                    ctx.save();
+                    ctx.setLineDash([5, 5]);
+                    ctx.lineWidth = 1;
+                    
+                    decadeYears.forEach(year => {
+                        const yearIndex = findYearIndex(year);
+                        if (yearIndex >= 0) {
+                            const xPos = xAxis.getPixelForValue(year);
+                            
+                            ctx.beginPath();
+                            ctx.moveTo(xPos, yAxis.top);
+                            ctx.lineTo(xPos, yAxis.bottom);
+                            ctx.strokeStyle = 'rgba(107, 114, 128, 0.3)';
+                            ctx.stroke();
+                            
+                            // 添加年代标记
+                            ctx.font = '12px Arial';
+                            ctx.fillStyle = 'rgba(107, 114, 128, 0.8)';
+                            ctx.textAlign = 'center';
+                            ctx.fillText(`${year}年代`, xPos, yAxis.top - 10);
+                        }
+                    });
+                    
+                    // 添加关键趋势区域标记
+                    const trends = [
+                        { start: 1970, end: 1979, label: '下降期', color: 'rgba(220, 38, 38, 0.08)' },
+                        { start: 1980, end: 1989, label: '增长期', color: 'rgba(16, 185, 129, 0.08)' },
+                        { start: 1990, end: 2002, label: '下降期', color: 'rgba(220, 38, 38, 0.08)' }
+                    ];
+                    
+                    trends.forEach(trend => {
+                        const startIndex = findYearIndex(trend.start);
+                        const endIndex = findYearIndex(trend.end);
+                        
+                        if (startIndex >= 0 && endIndex >= 0) {
+                            const startX = xAxis.getPixelForValue(trend.start);
+                            const endX = xAxis.getPixelForValue(trend.end);
+                            
+                            // 绘制背景色
+                            ctx.fillStyle = trend.color;
+                            ctx.fillRect(startX, yAxis.top, endX - startX, yAxis.bottom - yAxis.top);
+                            
+                            // 添加趋势标签
+                            ctx.font = '11px Arial';
+                            ctx.fillStyle = 'rgba(107, 114, 128, 0.6)';
+                            ctx.textAlign = 'center';
+                            ctx.fillText(trend.label, startX + (endX - startX) / 2, yAxis.top + 20);
+                        }
+                    });
+                    
+                    ctx.restore();
+                }
+            }]
+        });
+
+        // 普及率图表
+        const ratioCtx = document.getElementById('ratioChart').getContext('2d');
+        new Chart(ratioCtx, {
+            type: 'line',
+            data: {
+                labels: data.map(item => item.birthYear),
+                datasets: [{
+                    label: '高等教育普及率(%)',
+                    data: data.map(item => item.ratio),
+                    fill: true,
+                    backgroundColor: 'rgba(124, 58, 237, 0.2)',
+                    borderColor: 'rgba(124, 58, 237, 1)',
+                    borderWidth: 2,
+                    pointBackgroundColor: function(context) {
+                        const index = context.dataIndex;
+                        // 标记关键年份点
+                        if ([0, 10, 20, 30, 32].includes(index)) {
+                            return 'rgba(220, 38, 38, 1)'; // 红色标记关键点
+                        }
+                        return 'rgba(124, 58, 237, 1)';
+                    },
+                    pointRadius: function(context) {
+                        const index = context.dataIndex;
+                        // 增大关键年份点的大小
+                        if ([0, 10, 20, 30, 32].includes(index)) {
+                            return 6;
+                        }
+                        return 3;
+                    },
+                    pointHoverRadius: 8,
+                    pointBorderWidth: 2,
+                    pointBorderColor: 'white',
+                    tension: 0.2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    intersect: false,
+                    mode: 'index'
+                },
+                plugins: {
+                    tooltip: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                        padding: 12,
+                        titleFont: {
+                            size: 14,
+                            weight: 'bold'
+                        },
+                        bodyFont: {
+                            size: 13
+                        },
+                        callbacks: {
+                            title: function(context) {
+                                const index = context[0].dataIndex;
+                                return `出生年份: ${data[index].birthYear}`;
+                            },
+                            label: function(context) {
+                                return `高等教育普及率: ${context.raw}%`;
+                            },
+                            afterLabel: function(context) {
+                                const index = context.dataIndex;
+                                const changeFromStart = (parseFloat(data[index].ratio) - parseFloat(data[0].ratio)).toFixed(2);
+                                const sign = changeFromStart >= 0 ? '+' : '';
+                                
+                                let stage = "";
+                                if (index < 10) stage = "精英教育阶段";
+                                else if (index < 20) stage = "扩张初期";
+                                else if (index < 25) stage = "快速发展期";
+                                else stage = "大众化阶段";
+                                
+                                return [
+                                    `毕业年份: ${data[index].gradYear}`,
+                                    `出生人口: ${data[index].population.toLocaleString()}万`,
+                                    `毕业生人数: ${data[index].graduates.toLocaleString()}万`,
+                                    `与1970年相比: ${sign}${changeFromStart}%`,
+                                    `发展阶段: ${stage}`
+                                ];
+                            }
+                        }
+                    },
+                    legend: {
+                        position: 'top',
+                    },
+                    annotation: {
+                        annotations: {
+                            point1: {
+                                type: 'point',
+                                xValue: 1970,
+                                yValue: parseFloat(data[0].ratio),
+                                backgroundColor: 'rgba(255, 99, 132, 0.25)',
+                                radius: 10
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: '普及率（%）',
+                            font: {
+                                weight: 'bold'
+                            }
+                        },
+                        grid: {
+                            color: 'rgba(200, 200, 200, 0.2)'
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: '出生年份',
+                            font: {
+                                weight: 'bold'
+                            }
+                        },
+                        grid: {
+                            color: 'rgba(200, 200, 200, 0.2)',
+                            display: false
+                        },
+                        ticks: {
+                            autoSkip: true,
+                            maxTicksLimit: 10
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html> 

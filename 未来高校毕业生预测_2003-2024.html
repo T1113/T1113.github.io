@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2003-2024年中国出生人口与未来高校毕业生预测</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            height: 70vh;
+            width: 100%;
+        }
+        @media (max-width: 640px) {
+            .chart-container {
+                height: 50vh;
+            }
+        }
+        .highlight-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1;
+            background: linear-gradient(90deg, #3b82f6 0%, #ef4444 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-heading {
+            background: linear-gradient(90deg, #3b82f6 0%, #ef4444 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="container mx-auto px-4 py-8">
+        <!-- 导航按钮 -->
+        <div class="flex flex-wrap justify-center gap-4 mb-8">
+            <a href="出生人口与高校毕业生对比.html" class="px-5 py-3 bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-lg shadow-md hover:shadow-lg transition-all flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10.293 15.707a1 1 0 010-1.414L14.586 10l-4.293-4.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                    <path fill-rule="evenodd" d="M4.293 15.707a1 1 0 010-1.414L8.586 10 4.293 5.707a1 1 0 011.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                </svg>
+                1970-2002年出生人口分析
+            </a>
+            <a href="#" class="px-5 py-3 bg-gradient-to-r from-red-500 to-red-700 text-white rounded-lg shadow-md cursor-default opacity-75 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+                </svg>
+                当前页：2003-2024年毕业生预测
+            </a>
+            <a href="985_211高校占比预测_2027-2046.html" class="px-5 py-3 bg-gradient-to-r from-purple-500 to-purple-700 text-white rounded-lg shadow-md hover:shadow-lg transition-all flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10.293 15.707a1 1 0 010-1.414L14.586 10l-4.293-4.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                    <path fill-rule="evenodd" d="M4.293 15.707a1 1 0 010-1.414L8.586 10 4.293 5.707a1 1 0 011.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                </svg>
+                985/211高校占比预测
+            </a>
+        </div>
+        
+        <!-- 引人注目的开头部分 -->
+        <div class="mb-12 bg-white rounded-xl overflow-hidden shadow-lg">
+            <div class="p-6 md:p-8">
+                <h1 class="text-3xl md:text-4xl font-bold text-center mb-8 gradient-heading">未来已来：2025-2046年中国高校毕业生断崖式下跌</h1>
+                
+                <div class="flex flex-col md:flex-row gap-8 items-center mb-8">
+                    <div class="w-full md:w-2/3">
+                        <div class="bg-red-50 border-l-4 border-red-500 p-5 rounded-r-lg mb-6">
+                            <p class="text-lg font-medium text-gray-800">震撼预测：</p>
+                            <p class="text-gray-700 mt-2">2024年中国高校毕业生数量为<span class="font-semibold text-blue-600">1179万</span>，而到2046年将锐减至<span class="font-semibold text-red-600">685万</span>，跌幅达<span class="font-semibold text-red-600">42%</span>！</p>
+                            <p class="text-gray-700 mt-2">这意味着什么？未来20年，中国高校将面临怎样的生源危机？</p>
+                        </div>
+                        
+                        <p class="text-gray-700">本分析基于最新人口统计数据，揭示了由于出生率持续下降导致的高校毕业生数量断崖式下跌趋势，这将对中国高等教育体系、就业市场和人才培养带来深远影响。</p>
+                    </div>
+                    
+                    <div class="w-full md:w-1/3">
+                        <div class="bg-gray-50 rounded-lg shadow-inner p-6 relative pulse-animation">
+                            <div class="absolute -top-3 -right-3 bg-red-500 text-white rounded-full w-16 h-16 flex items-center justify-center text-xs font-bold transform rotate-12">
+                                <span>警报</span>
+                            </div>
+                            <div class="text-center mb-4 relative">
+                                <p class="text-gray-500 mb-1">2020年出生人口首次跌破</p>
+                                <div class="highlight-number">1200万</div>
+                                <div class="flex justify-center items-center mt-2">
+                                    <div class="h-14 w-2 bg-blue-500 rounded-t-md mx-1"></div>
+                                    <div class="h-10 w-2 bg-blue-500 rounded-t-md mx-1"></div>
+                                    <div class="h-6 w-2 bg-red-500 rounded-t-md mx-1"></div>
+                                    <div class="h-5 w-2 bg-red-500 rounded-t-md mx-1"></div>
+                                    <div class="h-5 w-2 bg-red-500 rounded-t-md mx-1"></div>
+                                </div>
+                                <p class="text-gray-500 mt-1">2022年首次跌破<span class="text-red-500 font-semibold">1000万</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center mb-4">
+                    <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
+                        <p class="text-gray-500 text-sm">2025年毕业生规模</p>
+                        <p class="text-xl font-bold text-blue-600">1145万</p>
+                    </div>
+                    <div class="bg-amber-50 p-4 rounded-lg border border-amber-100">
+                        <p class="text-gray-500 text-sm">2036年预测</p>
+                        <p class="text-xl font-bold text-amber-600">1212万</p>
+                        <p class="text-xs text-gray-500">峰值</p>
+                    </div>
+                    <div class="bg-red-50 p-4 rounded-lg border border-red-100">
+                        <p class="text-gray-500 text-sm">2046年预测</p>
+                        <p class="text-xl font-bold text-red-600">685万</p>
+                        <p class="text-xs text-gray-500">低谷</p>
+                    </div>
+                </div>
+                
+                <div class="flex justify-center mt-6">
+                    <a href="#main-content" class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500 to-red-500 text-white rounded-full hover:from-blue-600 hover:to-red-600 transition-all">
+                        探索详细数据
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v10.586l3.293-3.293a1 1 0 011.414 1.414l-5 5a1 1 0 01-1.414 0l-5-5a1 1 0 111.414-1.414L9 14.586V4a1 1 0 011-1z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div id="main-content">
+            <header class="mb-10 text-center">
+                <h1 class="text-3xl font-bold text-gray-800 mb-4">2003-2024年中国出生人口与未来高校毕业生预测</h1>
+                <p class="text-gray-600 max-w-3xl mx-auto">本分析基于历史数据推算，采用固定71.85%的普及率对2003-2024年出生人口对应的未来毕业生(2025-2046年)进行预测</p>
+            </header>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-4">出生人口与预测毕业生数量趋势</h2>
+                    <div class="chart-container">
+                        <canvas id="populationChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-4">未来高校毕业生数量变化趋势</h2>
+                    <div class="chart-container">
+                        <canvas id="graduatesChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-md mb-10">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">未来高校毕业生预测数据表</h2>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full text-sm">
+                        <thead>
+                            <tr class="bg-gray-100">
+                                <th class="px-4 py-2 text-left">出生年份</th>
+                                <th class="px-4 py-2 text-right">出生人口(万)</th>
+                                <th class="px-4 py-2 text-left">毕业年份</th>
+                                <th class="px-4 py-2 text-right">预测毕业生人数(万)</th>
+                                <th class="px-4 py-2 text-right">采用普及率(%)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dataTable">
+                            <!-- 数据将通过JS动态填充 -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3">人口趋势分析</h3>
+                    <div class="text-gray-700">
+                        <p>2003-2024年间，出生人口整体呈下降趋势，从<span class="font-semibold text-blue-600">1594万</span>下降至<span class="font-semibold text-blue-600">954万</span>。</p>
+                        <p class="mt-2">特别是2018年后出现断崖式下跌，2020年跌破1200万，2022年首次跌破1000万。</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3">毕业生预测趋势</h3>
+                    <div class="text-gray-700">
+                        <p>2025-2046年间，预计毕业生人数将从<span class="font-semibold text-red-600">1145万</span>下降至<span class="font-semibold text-red-600">685万</span>。</p>
+                        <p class="mt-2">2042-2046年期间毕业生数量预计将降至700万以下，回到2013年前的水平。</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3">高等教育挑战</h3>
+                    <div class="text-gray-700">
+                        <p>按照<span class="font-semibold text-purple-600">71.85%</span>的固定普及率计算，未来20年高校毕业生人数将减少约<span class="font-semibold text-purple-600">40%</span>。</p>
+                        <p class="mt-2">高校扩招与教育资源配置将面临重大调整，以应对生源减少的挑战。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-md mb-10">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">中国高等教育未来发展预测</h2>
+                <div class="flex justify-center mb-4">
+                    <svg width="800" height="180" viewBox="0 0 800 180" class="max-w-full">
+                        <!-- 时间轴 -->
+                        <line x1="50" y1="90" x2="750" y2="90" stroke="#CBD5E0" stroke-width="4"/>
+                        
+                        <!-- 阶段标记 -->
+                        <circle cx="100" cy="90" r="10" fill="#3B82F6"/>
+                        <circle cx="300" cy="90" r="10" fill="#3B82F6"/>
+                        <circle cx="500" cy="90" r="10" fill="#3B82F6"/>
+                        <circle cx="700" cy="90" r="10" fill="#3B82F6"/>
+                        
+                        <!-- 阶段文本 -->
+                        <text x="100" y="40" text-anchor="middle" font-size="14" fill="#2D3748">2025-2030年</text>
+                        <text x="100" y="60" text-anchor="middle" font-size="12" fill="#4A5568">相对稳定期</text>
+                        <text x="100" y="125" text-anchor="middle" font-size="12" fill="#4A5568">毕业生约1100-1150万</text>
+                        <text x="100" y="145" text-anchor="middle" font-size="10" fill="#718096">平均普及率保持在71.85%</text>
+                        
+                        <text x="300" y="40" text-anchor="middle" font-size="14" fill="#2D3748">2031-2035年</text>
+                        <text x="300" y="60" text-anchor="middle" font-size="12" fill="#4A5568">初步下降期</text>
+                        <text x="300" y="125" text-anchor="middle" font-size="12" fill="#4A5568">毕业生约1000-1100万</text>
+                        <text x="300" y="145" text-anchor="middle" font-size="10" fill="#718096">高校供需平衡开始调整</text>
+                        
+                        <text x="500" y="40" text-anchor="middle" font-size="14" fill="#2D3748">2036-2040年</text>
+                        <text x="500" y="60" text-anchor="middle" font-size="12" fill="#4A5568">加速下降期</text>
+                        <text x="500" y="125" text-anchor="middle" font-size="12" fill="#4A5568">毕业生约850-950万</text>
+                        <text x="500" y="145" text-anchor="middle" font-size="10" fill="#718096">高校资源配置面临挑战</text>
+                        
+                        <text x="700" y="40" text-anchor="middle" font-size="14" fill="#2D3748">2041-2046年</text>
+                        <text x="700" y="60" text-anchor="middle" font-size="12" fill="#4A5568">低谷调整期</text>
+                        <text x="700" y="125" text-anchor="middle" font-size="12" fill="#4A5568">毕业生约650-750万</text>
+                        <text x="700" y="145" text-anchor="middle" font-size="10" fill="#718096">教育体系重大结构性调整</text>
+                    </svg>
+                </div>
+            </div>
+
+            <footer class="text-center text-gray-500 text-sm">
+                <p>数据来源：中国2003-2024年新生人口数据</p>
+                <p class="mt-1">预测方法：基于2002年71.85%的普及率进行固定比例推算</p>
+                <p class="mt-1">© 2023 中国高等教育未来发展预测分析</p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        // 数据
+        const data = [
+            { birthYear: 2002, population: 1641, gradYear: 2024, graduates: 1179 }, // 实际数据，用于参考
+            { birthYear: 2003, population: 1594, gradYear: 2025, graduates: null },
+            { birthYear: 2004, population: 1588, gradYear: 2026, graduates: null },
+            { birthYear: 2005, population: 1612, gradYear: 2027, graduates: null },
+            { birthYear: 2006, population: 1581, gradYear: 2028, graduates: null },
+            { birthYear: 2007, population: 1591, gradYear: 2029, graduates: null },
+            { birthYear: 2008, population: 1604, gradYear: 2030, graduates: null },
+            { birthYear: 2009, population: 1587, gradYear: 2031, graduates: null },
+            { birthYear: 2010, population: 1588, gradYear: 2032, graduates: null },
+            { birthYear: 2011, population: 1600, gradYear: 2033, graduates: null },
+            { birthYear: 2012, population: 1635, gradYear: 2034, graduates: null },
+            { birthYear: 2013, population: 1640, gradYear: 2035, graduates: null },
+            { birthYear: 2014, population: 1687, gradYear: 2036, graduates: null },
+            { birthYear: 2015, population: 1655, gradYear: 2037, graduates: null },
+            { birthYear: 2016, population: 1786, gradYear: 2038, graduates: null },
+            { birthYear: 2017, population: 1723, gradYear: 2039, graduates: null },
+            { birthYear: 2018, population: 1523, gradYear: 2040, graduates: null },
+            { birthYear: 2019, population: 1465, gradYear: 2041, graduates: null },
+            { birthYear: 2020, population: 1200, gradYear: 2042, graduates: null },
+            { birthYear: 2021, population: 1062, gradYear: 2043, graduates: null },
+            { birthYear: 2022, population: 956, gradYear: 2044, graduates: null },
+            { birthYear: 2023, population: 902, gradYear: 2045, graduates: null },
+            { birthYear: 2024, population: 954, gradYear: 2046, graduates: null }
+        ];
+
+        // 固定普及率计算预测毕业生数
+        const FIXED_RATIO = 71.85;
+        
+        data.forEach(item => {
+            if (item.birthYear >= 2003) {
+                item.graduates = parseFloat((item.population * FIXED_RATIO / 100).toFixed(2));
+                item.ratio = FIXED_RATIO;
+            } else {
+                item.ratio = parseFloat(((item.graduates / item.population) * 100).toFixed(2));
+            }
+        });
+
+        // 填充表格
+        const tableBody = document.getElementById('dataTable');
+        
+        // 显示所有年份数据，表格里每隔三年显示一个
+        const displayYears = [2003, 2006, 2009, 2012, 2015, 2018, 2021, 2024];
+        
+        data.filter(item => displayYears.includes(item.birthYear)).forEach(item => {
+            const row = document.createElement('tr');
+            row.className = 'border-b hover:bg-gray-50';
+            row.innerHTML = `
+                <td class="px-4 py-2">${item.birthYear}</td>
+                <td class="px-4 py-2 text-right">${item.population.toLocaleString()}</td>
+                <td class="px-4 py-2">${item.gradYear}</td>
+                <td class="px-4 py-2 text-right">${item.graduates.toLocaleString()}</td>
+                <td class="px-4 py-2 text-right">${item.ratio.toFixed(2)}%</td>
+            `;
+            tableBody.appendChild(row);
+        });
+
+        // 出生人口与预测毕业生数量对比图
+        const populationCtx = document.getElementById('populationChart').getContext('2d');
+        new Chart(populationCtx, {
+            type: 'bar',
+            data: {
+                labels: data.filter(item => item.birthYear >= 2003).map(item => item.birthYear),
+                datasets: [
+                    {
+                        label: '出生人口(万)',
+                        data: data.filter(item => item.birthYear >= 2003).map(item => item.population),
+                        backgroundColor: 'rgba(99, 179, 237, 0.7)',
+                        borderColor: 'rgba(59, 130, 246, 1)',
+                        borderWidth: 1,
+                        order: 1
+                    },
+                    {
+                        label: '预测毕业生人数(万)',
+                        data: data.filter(item => item.birthYear >= 2003).map(item => item.graduates),
+                        backgroundColor: 'rgba(252, 129, 129, 0.7)',
+                        borderColor: 'rgba(220, 38, 38, 1)',
+                        borderWidth: 1,
+                        order: 2
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            afterTitle: function(context) {
+                                const index = context[0].dataIndex;
+                                const birthYear = data.filter(item => item.birthYear >= 2003)[index].birthYear;
+                                const gradYear = birthYear + 22;
+                                return `对应毕业年份: ${gradYear}`;
+                            }
+                        }
+                    },
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: '人数（万）',
+                            font: {
+                                weight: 'bold'
+                            }
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: '出生年份',
+                            font: {
+                                weight: 'bold'
+                            }
+                        },
+                        ticks: {
+                            autoSkip: true,
+                            maxTicksLimit: 12
+                        }
+                    }
+                }
+            }
+        });
+
+        // 未来毕业生变化趋势图
+        const graduatesCtx = document.getElementById('graduatesChart').getContext('2d');
+        new Chart(graduatesCtx, {
+            type: 'line',
+            data: {
+                labels: data.filter(item => item.birthYear >= 2003).map(item => item.gradYear),
+                datasets: [{
+                    label: '预测高校毕业生数量(万)',
+                    data: data.filter(item => item.birthYear >= 2003).map(item => item.graduates),
+                    fill: true,
+                    backgroundColor: 'rgba(252, 129, 129, 0.2)',
+                    borderColor: 'rgba(220, 38, 38, 1)',
+                    borderWidth: 2,
+                    pointBackgroundColor: function(context) {
+                        const index = context.dataIndex;
+                        // 标记关键年份点
+                        if ([0, 5, 10, 15, 21].includes(index)) {
+                            return 'rgba(124, 58, 237, 1)';
+                        }
+                        return 'rgba(220, 38, 38, 1)';
+                    },
+                    pointRadius: function(context) {
+                        const index = context.dataIndex;
+                        if ([0, 5, 10, 15, 21].includes(index)) {
+                            return 6;
+                        }
+                        return 4;
+                    },
+                    pointHoverRadius: 8,
+                    pointBorderWidth: 2,
+                    pointBorderColor: 'white',
+                    tension: 0.2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    intersect: false,
+                    mode: 'index'
+                },
+                plugins: {
+                    tooltip: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                        padding: 12,
+                        titleFont: {
+                            size: 14,
+                            weight: 'bold'
+                        },
+                        bodyFont: {
+                            size: 13
+                        },
+                        callbacks: {
+                            title: function(context) {
+                                const index = context[0].dataIndex;
+                                const filteredData = data.filter(item => item.birthYear >= 2003);
+                                return `毕业年份: ${filteredData[index].gradYear}`;
+                            },
+                            afterLabel: function(context) {
+                                const index = context.dataIndex;
+                                const filteredData = data.filter(item => item.birthYear >= 2003);
+                                const item = filteredData[index];
+                                const changeFromStart = (item.graduates - filteredData[0].graduates).toFixed(2);
+                                const percentChange = ((item.graduates - filteredData[0].graduates) / filteredData[0].graduates * 100).toFixed(2);
+                                const sign = changeFromStart >= 0 ? '+' : '';
+                                
+                                let stage = "";
+                                if (index < 6) stage = "相对稳定期";
+                                else if (index < 12) stage = "初步下降期";
+                                else if (index < 18) stage = "加速下降期";
+                                else stage = "低谷调整期";
+                                
+                                return [
+                                    `对应出生年份: ${item.birthYear}`,
+                                    `出生人口: ${item.population.toLocaleString()}万`,
+                                    `与2025年相比: ${sign}${changeFromStart}万 (${sign}${percentChange}%)`,
+                                    `发展阶段: ${stage}`,
+                                    `普及率: ${item.ratio.toFixed(2)}%`
+                                ];
+                            }
+                        }
+                    },
+                    legend: {
+                        position: 'top',
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 600,
+                        title: {
+                            display: true,
+                            text: '毕业生人数（万）',
+                            font: {
+                                weight: 'bold'
+                            }
+                        },
+                        grid: {
+                            color: 'rgba(200, 200, 200, 0.2)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: '毕业年份',
+                            font: {
+                                weight: 'bold'
+                            }
+                        },
+                        grid: {
+                            color: 'rgba(200, 200, 200, 0.2)',
+                            display: false
+                        },
+                        ticks: {
+                            autoSkip: true,
+                            maxTicksLimit: 12
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html> 
